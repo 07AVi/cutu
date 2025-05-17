@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spellbound Story</title>
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'IM Fell English SC', serif;
+      background: radial-gradient(circle, #1a1a1a 0%, #000 100%);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .book {
+      width: 300px;
+      height: 400px;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    .cover {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 1s;
+    }
+
+    .cover.open {
+      transform: rotateY(-180deg);
+    }
+
+    .front, .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+    }
+
+    .front {
+      background: url('cover.jpg') no-repeat center/cover;
+    }
+
+    .back {
+      background-color: #2d2b2b;
+      color: #fcecc9;
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .back h2 {
+      margin-bottom: 1rem;
+    }
+
+    .back ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .back ul li {
+      margin: 0.5rem 0;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .back ul li:hover {
+      color: gold;
+      text-shadow: 0 0 5px gold;
+    }
+  </style>
+</head>
+<body>
+  <div class="book" onclick="openBook()">
+    <div class="cover" id="book-cover">
+      <div class="front"></div>
+      <div class="back">
+        <h2>Chapters</h2>
+        <ul>
+          <li onclick="goToChapter(1)">Chapter 1: RCB Fan?</li>
+          <li onclick="goToChapter(2)">Chapter 2: Strangers to Messages</li>
+          <li onclick="goToChapter(3)">Chapter 3: My fovurite person</li>
+          <li onclick="goToChapter(4)">Chapter 4: Best phase</li>
+          <li onclick="goToChapter(5)">Chapter 5: The tough times</li>
+          <li onclick="goToChapter(6)">Chapter 6: Pookie & Cutu</li>
+          <li onclick="goToChapter(8)">Chapter 7: I Still Believe in Us</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openBook() {
+      document.getElementById('book-cover').classList.add('open');
+    }
+
+    function goToChapter(num) {
+      window.location.href = `chapter${num}.html`;
+    }
+  </script>
+</body>
+</html>
